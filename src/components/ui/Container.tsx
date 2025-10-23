@@ -9,12 +9,8 @@ const Container = React.forwardRef<HTMLDivElement, ContainerProps>(
     return (
       <div
         ref={ref}
-        // Використовуємо cn для об'єднання класів
-        // max-w-7xl -> обмежує максимальну ширину (1280px)
-        // mx-auto -> центрує контейнер
-        // px-4 sm:px-6 lg:px-8 -> адаптивні відступи по боках
         className={cn(
-          "w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+          "w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8",
           className
         )}
         {...props}

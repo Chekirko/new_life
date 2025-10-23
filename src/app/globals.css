@@ -12,12 +12,9 @@
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
-  
-  /* --- ЗМІНА: Тепер --primary це бірюзовий --- */
+
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
-  
-  /* --- ЗМІНА: --secondary це тепер лаймовий --- */
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
 
@@ -32,43 +29,35 @@
   --radius: 0.5rem;
 }
 
-/* --- Налаштування для СВІТЛОЇ теми (основна для Larexa) --- */
+/* === СВІТЛА ТЕМА (основна) === */
 :root {
-  /* Базові кольори */
-  --background: oklch(1 0 0); /* #FFFFFF */
-  --foreground: oklch(0.06 0.01 270); /* #0D1216 */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.06 0.01 270);
 
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.06 0.01 270);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.06 0.01 270);
 
-  /* --- ЗМІНА: ОСНОВНИЙ АКЦЕНТНИЙ КОЛІР --- */
-  --primary: oklch(0.69 0.15 190.8); /* #2ab9a5 - БІРЮЗОВИЙ */
-  --primary-foreground: oklch(1 0 0); /* Білий текст на бірюзовому фоні */
+  /* Основні акценти */
+  --primary: oklch(0.69 0.15 190.8); /* #2ab9a5 - бірюзовий */
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.77 0.17 126.5); /* #97c74e - лаймовий */
+  --secondary-foreground: oklch(0.06 0.01 270);
 
-  /* --- ЗМІНА: ДРУГОРЯДНИЙ КОЛІР (ДЛЯ ГРАДІЄНТА) --- */
-  --secondary: oklch(0.77 0.17 126.5); /* #97c74e - лаймовий/зелений */
-  --secondary-foreground: oklch(0.06 0.01 270); /* Темний текст на лаймовому фоні */
-  
-  /* Допоміжні кольори */
-  --muted: oklch(0.97 0.005 270); /* #F8F9FA */
-  --muted-foreground: oklch(0.45 0.01 270); /* #666666 */
-  
-  --accent: var(--primary); /* Акцент = основний бірюзовий */
+  --muted: oklch(0.97 0.005 270);
+  --muted-foreground: oklch(0.45 0.01 270);
+  --accent: var(--primary);
   --accent-foreground: var(--primary-foreground);
   --destructive: oklch(0.57 0.24 27);
-
-  /* Рамки та поля вводу */
   --border: oklch(0.9 0.01 270 / 0.5);
   --input: oklch(0.9 0.01 270 / 0.4);
-  --ring: var(--primary); /* Фокус на елементах буде бірюзовий */
+  --ring: var(--primary);
 }
 
-/* --- Налаштування для ТЕМНОЇ теми --- */
+/* === ТЕМНА ТЕМА === */
 .dark {
-  /* Базові кольори */
-  --background: oklch(0.06 0.01 270); /* #0D1216 */
+  --background: oklch(0.06 0.01 270);
   --foreground: oklch(0.95 0.005 270);
 
   --card: oklch(0.1 0.015 270);
@@ -76,28 +65,27 @@
   --popover: oklch(0.1 0.015 270);
   --popover-foreground: oklch(0.95 0.005 270);
 
-  /* Акцентні кольори залишаються яскравими */
-  --primary: oklch(0.69 0.15 190.8); /* Бірюзовий */
+  --primary: oklch(0.69 0.15 190.8);
   --primary-foreground: oklch(0.06 0.01 270);
-  --secondary: oklch(0.77 0.17 126.5); /* Лаймовий */
+  --secondary: oklch(0.77 0.17 126.5);
   --secondary-foreground: oklch(0.06 0.01 270);
 
   --muted: oklch(0.1 0.015 270);
   --muted-foreground: oklch(0.65 0.01 270);
-  
   --accent: var(--primary);
   --accent-foreground: var(--primary-foreground);
   --destructive: oklch(0.7 0.19 22);
-  
   --border: oklch(1 0 0 / 0.1);
   --input: oklch(1 0 0 / 0.1);
   --ring: var(--primary);
 }
 
+/* === BASE LAYER === */
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
     scroll-behavior: smooth;
@@ -106,15 +94,60 @@
   }
 }
 
-/* --- КЛАС ДЛЯ ГРАДІЄНТА (використовує secondary -> primary) --- */
+/* === UTILITIES === */
 @layer utilities {
+  /* Основний градієнт секцій */
   .bg-primary-gradient {
     background-image: linear-gradient(150deg, var(--secondary) 0%, var(--primary) 100%);
   }
-}
 
-@layer utilities {
+  /* Бірюзова тінь */
   .shadow-primary {
     box-shadow: 0 4px 24px -8px oklch(0.69 0.15 190.8 / 0.4);
+  }
+
+  /* SVG-заливки для сумісності зі старими SCSS */
+  .fill-grad-start {
+    stop-color: var(--secondary);
+  }
+  .fill-grad-end {
+    stop-color: var(--primary);
+  }
+  .fill-white {
+    fill: white;
+  }
+  .fill-light {
+    fill: var(--muted);
+  }
+
+  /* Текстові акценти */
+  .text-primary {
+    color: var(--primary);
+  }
+  .bg-primary {
+    background-color: var(--primary);
+  }
+
+  /* Pre-title (як у SCSS) */
+  .pre-title {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    color: var(--primary);
+    font-size: 0.875rem;
+  }
+
+  /* Кнопка з градієнтом (Shadcn-style + SCSS compatibility) */
+  .btn-grad {
+    background: linear-gradient(150deg, var(--secondary) 0%, var(--primary) 100%);
+    color: white;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  .btn-grad:hover {
+    opacity: 0.9;
+    box-shadow: 0 4px 20px oklch(0.69 0.15 190.8 / 0.35);
   }
 }

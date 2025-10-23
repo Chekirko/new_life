@@ -1,10 +1,9 @@
 import { Header } from "@/components/layout/Header";
-// import { HeroSection } from "@/components/home/HeroSection";
-import { NewsSlider } from "@/components/home/NewsSlider";
 
 import Hero from "@/components/home/Hero";
 import NewsSection from "@/components/home/News";
 import PastorGreetings from "@/components/home/PastorGreetings";
+import FirstTimeSection from "@/components/home/FirstTimeSection";
 
 // const services = [
 //   {
@@ -43,7 +42,8 @@ export default function HomePage() {
         <Hero />
         <NewsSection />
         <PastorGreetings />
-        <NewsSlider />
+
+        <FirstTimeSection />
         <section className="relative pt-24 pb-16 bg-gradient-to-br from-primary to-accent text-white">
           <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>

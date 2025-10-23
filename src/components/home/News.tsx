@@ -383,8 +383,8 @@ const NewsSection = () => {
   ];
 
   return (
-    <Container>
-      <section className="px-12 py-16 md:py-20 lg:py-24 bg-muted/30">
+    <section className="px-12 py-16 md:py-20 lg:py-24 bg-muted/30">
+      <Container>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Заголовок секції */}
           <motion.div
@@ -504,8 +504,8 @@ const NewsSection = () => {
             </Button>
           </motion.div>
         </div>
-      </section>
-    </Container>
+      </Container>
+    </section>
   );
 };
 
